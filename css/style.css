@@ -1,6 +1,7 @@
 /* general */
 :root {
     --main-color: #1E202B;
+    --secondary-color: #262936;
 
 }
 
@@ -10,6 +11,18 @@
 
 .main-color-bg {
     background-color: var(--main-color) !important;
+}
+.secondary-color-bg {
+    background-color: var(--secondary-color) !important;
+}
+
+/* nav */
+.navbar-brand h1{
+    font-size: 1rem;
+}
+.navbar-brand p{
+    font-size: .60rem;
+    color: rgb(155, 155, 155);
 }
 
 /* weather screen */
@@ -22,10 +35,21 @@
     /* background-size: cover; */
 }
 
-.weather-screen .form-control:focus{
+.weather-screen .form-control:focus {
     box-shadow: none;
 }
+
 .weather-screen .form-control::placeholder {
-    color: #a7a7a7 !important; 
-    opacity: 1; 
+    color: #a7a7a7 !important;
+    opacity: 1;
 }
+
+.weather-card {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.6px);
+    -webkit-backdrop-filter: blur(3.6px);
+}
+
