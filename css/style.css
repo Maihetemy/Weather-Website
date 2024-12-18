@@ -30,7 +30,7 @@
 /* weather screen */
 
 .weather-screen {
-    min-height: 100vh;
+    min-height: 50vh;
     background-image: url(../imgs/banner.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -75,8 +75,8 @@
 }
 
 .weather-card .temp p {
-    font-size: 80px;
-    font-weight: 700;
+    font-size: 70px;
+    font-weight: 900;
     line-height: 135px;
     color: white;
 }
