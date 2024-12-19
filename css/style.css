@@ -40,7 +40,7 @@
     box-shadow: none;
 }
 
-.weather-screen .form-control::placeholder {
+.weather-screen .form-control::placeholder , footer .form-control::placeholder {
     color: #a7a7a7 !important;
     opacity: 1;
 }
@@ -86,3 +86,17 @@
 
 }
 
+
+
+/* contact */
+.contact{
+    min-height: 50vh;
+}
+
+.contact .title{
+    min-height: 50px;
+    background-color: var(--secondary-color);
+    border-radius: 50px;
+    font-size: 12px;
+    color: lightgray;
+}

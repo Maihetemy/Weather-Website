@@ -1,8 +1,11 @@
 // current weather
 // http://api.weatherapi.com/v1/current.json?key=c9b78bcb02654430b9b180345232311&q=London
 // ${apiBase}/forecast.json?key=${apiKey}&q=${city}&days=3
+
+
 const apiKey = `c9b78bcb02654430b9b180345232311`;
 const apiBase = `https://api.weatherapi.com/v1`;
+
 const fullDirections = {
     N: "North",
     NNE: "North-Northeast",
@@ -22,20 +25,24 @@ const fullDirections = {
     NNW: "North-Northwest"
 };
 
-
 const currentWeatherCard = document.getElementById('currentWeatherCard');
 const weatherCards = document.querySelector('.weather-cards');
 const search = document.getElementById('search');
+const searchBtn = document.getElementById('searchBtn');
 
 
 search.addEventListener('keyup', function (event) {
     getWeather(event.target.value);
-    console.log(event.target.value);
+    // console.log(event.target.value);
 
 })
 
 
+searchBtn.addEventListener('click', function () {
+    getWeather(search.value);
+})
 
+getWeather('port said');
 
 async function getWeather(city) {
     try {
@@ -158,10 +165,10 @@ function updateTime(date) {
 // updateTime("2024-12-18 01:32");
 
 
-// class Car {
-//     constructor(name, year) {
+// class Weather {
+//     constructor(name, temp) {
 //       this.name = name;
-//       this.year = year;
+//       this.temp = temp;
 //     }
 //   }
 // var currentWeather = {
