@@ -68,6 +68,9 @@ function displaycurrentWeather(data) {
     // var forecastDate1 = updateTime(data.forecast.forecastday[1].date);
     var newCard = ``;
     for (var i = 0; i < 3; i++) {
+        var currentDate = updateTime(data.forecast.forecastday[i].date);
+        console.log(data.forecast.forecastday[i].date);
+        
         newCard += `
         <div class="inner p-3 col-lg-4 d-flex align-items-stretch text-white">
             <div class=" weather-card flex-grow-1 ${i === 0 ? `` : `text-center`} " id="currentWeatherCard">
@@ -89,7 +92,7 @@ function displaycurrentWeather(data) {
                         <p class="my-2 mb-3">${data.forecast.forecastday[i].day.mintemp_c}&#8451;</p>`
                     }
 
-                    <p class="condition mb-3">${data.current.condition.text}</p>
+                    <p class="condition mb-3">${data.forecast.forecastday[i].day.condition.text}</p>
 
                     ${i === 0 ? `
                         <div class="row justify-content-between">
