@@ -29,7 +29,21 @@ const currentWeatherCard = document.getElementById('currentWeatherCard');
 const weatherCards = document.querySelector('.weather-cards');
 const search = document.getElementById('search');
 const searchBtn = document.getElementById('searchBtn');
+const weatherScreen = document.querySelector('.weatherScreen');
+const homeNav = document.getElementById('homeNav');
 
+const contactNav = document.getElementById('contactNav');
+const contactScreen = document.querySelector('.contactScreen');
+
+
+contactNav.addEventListener('click', () => {
+    contactScreen.classList.replace('d-none', 'd-block');
+    weatherScreen.classList.replace('d-block', 'd-none');
+})
+homeNav.addEventListener('click', () => {
+    contactScreen.classList.replace('d-block', 'd-none');
+    weatherScreen.classList.replace('d-none', 'd-block');
+})
 
 
 search.addEventListener('keyup', function (event) {

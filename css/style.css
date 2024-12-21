@@ -4,9 +4,20 @@
     --secondary-color: #262936;
 
 }
+ul {
+    list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
 
 .main-color {
     color: var(--main-color) !important;
+}
+.secondary-color {
+    color: var(--secondary-color) !important;
 }
 
 .main-color-bg {
@@ -29,18 +40,18 @@
 
 /* weather screen */
 
-.weather-screen {
+.weatherScreen {
     min-height: 50vh;
     background-image: url(../imgs/banner.png);
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.weather-screen .form-control:focus {
+.weatherScreen .form-control:focus {
     box-shadow: none;
 }
 
-.weather-screen .form-control::placeholder , footer .form-control::placeholder {
+.weatherScreen .form-control::placeholder , footer .form-control::placeholder {
     color: #a7a7a7 !important;
     opacity: 1;
 }
@@ -89,14 +100,22 @@
 
 
 /* contact */
-.contact{
+.contactScreen{
     min-height: 50vh;
 }
 
-.contact .title{
+.contactScreen .title{
     min-height: 50px;
     background-color: var(--secondary-color);
     border-radius: 50px;
     font-size: 12px;
     color: lightgray;
 }
+
+::placeholder {
+    color: lightgray !important;
+    opacity: 1 ; /* Firefox */
+  }
+  
+  ::-ms-input-placeholder { /* Edge 12-18 */
+    color: lightgray !important;}
