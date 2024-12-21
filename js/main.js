@@ -54,7 +54,7 @@ async function getWeather(city) {
         console.log(data);
         console.log(data.location.name);
     } catch (error) {
-
+        console.log(error);
     }
 
 }
@@ -62,67 +62,56 @@ async function getWeather(city) {
 
 function displaycurrentWeather(data) {
     console.log(data);
-    
+
     var currentDate = updateTime(data.location.localtime);
-    var forecastDate1 = updateTime(data.forecast.forecastday[1].date);
-    var forecastDate2 = updateTime(data.forecast.forecastday[2].date);
+    // var forecastDate2 = updateTime(data.forecast.forecastday[2].date);
+    // var forecastDate1 = updateTime(data.forecast.forecastday[1].date);
     var newCard = ``;
-    newCard += `<div class="inner p-3 col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch text-white">
-    <div class=" weather-card flex-grow-1" id="currentWeatherCard">
-        <div class="d-flex justify-content-between card-head p-2">
-            <p class="day ">${currentDate.dayOfWeek}</p>
-            <p class="date">${currentDate.dayOfMonth} ${currentDate.month}</p>
-        </div>
-        <div class="card-body p-3">
-            <p class="location my-3">${data.location.name}</p>
-            <div class="temp row">
-            <p class="col-7">${data.current.temp_c}&#8451;</p>
-            <img src="${data.current.condition.icon}" class="col-5 ps-2" alt="">
-        </div>
-            <p class="condition mb-3">${data.current.condition.text}</p>
-            <div class="row justify-content-between">
-            <div class="rain col-4">
-                <img src="../imgs/icon-umberella.png" class="me-1" alt="">
-                <p>${data.current.wind_degree}%</p>
-            </div>
-            <div class="wind col-4">
-                <img src="../imgs/icon-wind.png" class="me-1" alt="">
-                <p>${data.current.wind_kph}km/h</p>
-            </div>
-            <div class="direction col-4">
-                <img src="../imgs/icon-compass.png" class="me-1" alt="">
-                <p>${fullDirections[data.current.wind_dir]}</p>
-            </div>
-        </div>
-        </div>
-    </div>
-        </div>`;
-    newCard += `<div class="inner p-3 col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch text-white">
-            <div class="weather-card flex-grow-1 text-center " id="currentWeatherCard">
-                <div class="d-flex justify-content-center card-head p-2">
-                    <p class="day ">${forecastDate1.dayOfWeek}</p>
+    for (var i = 0; i < 3; i++) {
+        newCard += `
+        <div class="inner p-3 col-lg-4 d-flex align-items-stretch text-white">
+            <div class=" weather-card flex-grow-1 ${i === 0 ? `` : `text-center`} " id="currentWeatherCard">
+                <div class="d-flex justify-content-between card-head p-2">
+                    <p class="day ">${currentDate.dayOfWeek}</p>
+                    ${i === 0 ? `<p class="date">${currentDate.dayOfMonth} ${currentDate.month}</p>` : ``}
                 </div>
-                <div class="card-body p-5">
-                    <img src="${data.forecast.forecastday[1].day.condition.icon}" class="ps-2" alt="">
-                    <p class="my-2">${data.forecast.forecastday[1].day.maxtemp_c}&#8451;</p>
-                    <p class="my-2 mb-3">${data.forecast.forecastday[1].day.mintemp_c}&#8451;</p>
-                    <p class="condition my-2">${data.forecast.forecastday[1].day.condition.text}</p>
-                </div>
-            </div>
-        </div>`;
-    newCard += `<div class="inner p-3 col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch text-white">
-            <div class="weather-card flex-grow-1 text-center " id="currentWeatherCard">
-                <div class="d-flex justify-content-center card-head p-2">
-                    <p class="day ">${forecastDate2.dayOfWeek}</p>
-                </div>
-                <div class="card-body p-5">
-                    <img src="${data.forecast.forecastday[2].day.condition.icon}" class="ps-2" alt="">
-                    <p class="my-2">${data.forecast.forecastday[2].day.maxtemp_c}&#8451;</p>
-                    <p class="my-2 mb-3">${data.forecast.forecastday[2].day.mintemp_c}&#8451;</p>
-                    <p class="condition my-2">${data.forecast.forecastday[2].day.condition.text}</p>
+                <div class="card-body p-3">
+
+                    ${i === 0 ? `<p class="location my-3">${data.location.name}</p>` : ``}
+
+                    <div class="temp ${i === 0 ? `row` : ``}">
+                        ${i === 0 ? `<p class=" bigger-p col-7">${data.current.temp_c}&#8451;</p>` : ``}
+                        <img src="${data.current.condition.icon}" class="${i === 0 ? `col-5 ps-2` : `my-4`}" alt="">
+                    </div>
+
+                    ${i === 0 ? `` : `
+                        <p class="my-2 fs-4 fw-bold">${data.forecast.forecastday[i].day.maxtemp_c}&#8451;</p>
+                        <p class="my-2 mb-3">${data.forecast.forecastday[i].day.mintemp_c}&#8451;</p>`
+                    }
+
+                    <p class="condition mb-3">${data.current.condition.text}</p>
+
+                    ${i === 0 ? `
+                        <div class="row justify-content-between">
+                        <div class="rain col-4">
+                            <img src="../imgs/icon-umberella.png" class="me-1" alt="">
+                            <p>${data.current.wind_degree}%</p>
+                        </div>
+                        <div class="wind col-4">
+                            <img src="../imgs/icon-wind.png" class="me-1" alt="">
+                            <p>${data.current.wind_kph}km/h</p>
+                        </div>
+                        <div class="direction col-4">
+                            <img src="../imgs/icon-compass.png" class="me-1" alt="">
+                            <p>${fullDirections[data.current.wind_dir]}</p>
+                        </div>
+                        </div>` : ``
+                    }
                 </div>
             </div>
         </div>`;
+    }
+
     weatherCards.innerHTML = newCard;
 }
 

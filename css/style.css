@@ -74,7 +74,7 @@
     color: rgb(0, 191, 255);
 }
 
-.weather-card .temp p {
+.bigger-p {
     font-size: 70px;
     font-weight: 900;
     line-height: 135px;
