@@ -44,7 +44,7 @@ a {
     min-height: 50vh;
     background-image: url(../imgs/banner.png);
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
 }
 
 .weatherScreen .form-control:focus {
